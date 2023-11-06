@@ -2,16 +2,24 @@
 #define COLLISION_H
 
 #include "circle.h"
+#include <array>
 #include <vector>
-#include<unordered_map>
+#include <mutex>
 
-#define n 5
 
-extern bool isColliding(Circle& circle1, Circle& circle2);
-extern void handleCollisions(Circle& circle1, Circle& circle2);
-extern void detectAndHandleCollisions(vector<Circle>& circles);
+class Collision {
+private:
+    vector<array<int, 2>> circles_colliding;
+    vector<pair<Circle*, int>> circles;
 
-extern void checkCollisionZone(unordered_map<int, vector<Circle>>& circles_mapped, int zone);
-extern void checkCollision(unordered_map<int, vector<Circle>>& circles_mapped_);
+    bool isColliding(Circle* circle1, Circle* circle2);
+    void handleCollisions(Circle* circle1, Circle* circle2);
+    void populateCirclesColliding();
+
+public:
+    Collision(vector<pair<Circle*, int>>& circles_);
+    void handleBorderCollisions(int X, int Y);
+    void detectAndHandleCollisions(vector<mutex>& mtx);
+};
 
 #endif
