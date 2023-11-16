@@ -1,0 +1,11 @@
+pub const N: usize = 3;
+pub const N_G: usize = 5;
+pub const N_T: usize = N_G * N_G;
+pub const X_SIZE: f64 = 100.0;
+pub const Y_SIZE: f64 = 100.0;
+pub const V_MAX: f64 = 10.0;
+pub const V_MIN: f64 = 0.0;
+pub const R_MAX: f64 = 10.0;
+pub const R_MIN: f64 = 1.0;
+pub const TF: f64 = 10.0;
+pub const DT: f64 = 0.1;
