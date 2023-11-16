@@ -1,4 +1,4 @@
-#include "particle.h"
+#include "../include/particle.h"
 
 Particle::Particle(Vec2d pos, Vec2d vel, double radius, int idx) : pos(pos), vel(vel), radius(radius), idx(idx) {}
 

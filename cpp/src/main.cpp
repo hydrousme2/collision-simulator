@@ -4,7 +4,7 @@
 #include <chrono>
 using namespace std::chrono;
 
-#include "collision.h"
+#include "../include/collision.h"
 
 vector<mutex> mtx(N);
 void gridify(vector<Particle>& particles, Vec2d& threshold, vector<vector<Particle>>& subgrids) {

@@ -1,4 +1,4 @@
-#include "collision.h"
+#include "../include/collision.h"
 
 bool checkCollision(Particle& a, Particle& b) {
     Vec2d s = a.pos - b.pos; 
