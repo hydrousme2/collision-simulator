@@ -1,25 +1,12 @@
 #ifndef COLLISION_H
 #define COLLISION_H
 
-#include "circle.h"
-#include <array>
+#include "particle.h"
 #include <vector>
-#include <mutex>
 
-
-class Collision {
-private:
-    vector<array<int, 2>> circles_colliding;
-    vector<pair<Circle*, int>> circles;
-
-    bool isColliding(Circle* circle1, Circle* circle2);
-    void handleCollisions(Circle* circle1, Circle* circle2);
-    void populateCirclesColliding();
-
-public:
-    Collision(vector<pair<Circle*, int>>& circles_);
-    void handleBorderCollisions(int X, int Y);
-    void detectAndHandleCollisions(vector<mutex>& mtx);
-};
+extern bool checkCollision(Particle& a, Particle& b);
+extern void borderCollision(Particle& particle);
+extern void resolveCollision(Particle& a, Particle& b);
+extern void detectCollision(vector<Particle>& particles);
 
 #endif

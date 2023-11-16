@@ -1,31 +1,29 @@
-#ifndef Vec2D_H
-#define Vec2D_H
+#ifndef VEC2D_H
+#define VEC2D_H
 
-#include <cmath>
+#include <math.h>
 using namespace std;
 
-class Vec2D {
+#include "config.h"
+
+class Vec2d {
 public:
-    double x;
-    double y;
+    double x, y;
 
-    // constructors
-    Vec2D();
-    Vec2D(double x, double y);
+    Vec2d();
+    Vec2d(double x, double y);
 
-    // operator overloading
-    Vec2D operator+(const Vec2D& other) const;
-    Vec2D operator-(const Vec2D& other) const;
-    Vec2D operator*(const Vec2D& other) const;
-    Vec2D operator/(const Vec2D& other) const;
-    Vec2D operator*(double scalar) const;
-    Vec2D operator/(double scalar) const;
-    bool operator==(const Vec2D& other) const;
+    Vec2d operator+(const Vec2d& rhs) const;
+    Vec2d operator-(const Vec2d& rhs) const;
+    Vec2d operator*(double rhs) const;
+    Vec2d operator/(double rhs) const;
 
-    // other methods
-    double dot(const Vec2D& other);
-    double length();
+    double magnitude() const;
     void normalize();
 };
+
+extern double dot(const Vec2d& lhs, const Vec2d& rhs);
+extern double dist(const Vec2d& lhs, const Vec2d& rhs);
+extern double fRand(double fMin, double fMax);
 
 #endif

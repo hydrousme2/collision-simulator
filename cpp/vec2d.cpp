@@ -1,52 +1,41 @@
 #include "vec2d.h"
 
-// Constructors
-Vec2D::Vec2D() : x(0.0), y(0.0) {}
+Vec2d::Vec2d() : x(0), y(0) {}
+Vec2d::Vec2d(double x, double y) : x(x), y(y) {}
 
-Vec2D::Vec2D(double x, double y) : x(x), y(y) {}
-
-// operator overloading
-Vec2D Vec2D::operator+(const Vec2D& other) const {
-    return Vec2D(x + other.x, y + other.y);
+Vec2d Vec2d::operator+(const Vec2d& rhs) const {
+    return Vec2d(x + rhs.x, y + rhs.y);
+}
+Vec2d Vec2d::operator-(const Vec2d& rhs) const {
+    return Vec2d(x - rhs.x, y - rhs.y);
+}
+Vec2d Vec2d::operator*(double rhs) const {
+    return Vec2d(x * rhs, y * rhs);
+}
+Vec2d Vec2d::operator/(double rhs) const {
+    return Vec2d(x / rhs, y / rhs);
 }
 
-Vec2D Vec2D::operator-(const Vec2D& other) const {
-    return Vec2D(x - other.x, y - other.y);
+double Vec2d::magnitude() const {
+    return sqrt(x * x + y * y);
+}
+void Vec2d::normalize() {
+    double m = magnitude();
+    x /= m;
+    y /= m;
 }
 
-Vec2D Vec2D::operator*(const Vec2D& other) const {
-    return Vec2D(x * other.x, y * other.y);
+
+double dot(const Vec2d& lhs, const Vec2d& rhs) {
+    return lhs.x * rhs.x + lhs.y * rhs.y;
 }
 
-Vec2D Vec2D::operator/(const Vec2D& other) const {
-    return Vec2D(x / other.x, y / other.y);
+double dist(const Vec2d& lhs, const Vec2d& rhs) {
+    return (lhs - rhs).magnitude();
 }
 
-Vec2D Vec2D::operator*(double scalar) const {
-    return Vec2D(x * scalar, y * scalar);
-}
-
-bool Vec2D::operator==(const Vec2D& other) const {
-    return (x == other.x) && (y == other.y);
-}
-
-Vec2D Vec2D::operator/(double scalar) const {
-    return Vec2D(x / scalar, y / scalar);
-}
-
-// other methods
-double Vec2D::dot(const Vec2D& other) {
-    return (x * other.x + y * other.y);
-}
-
-double Vec2D::length() {
-    return sqrt(x*x + y*y);
-}
-
-void Vec2D::normalize() {
-    double len = length();
-    if (len != 0.0f) {
-        x /= len;
-        y /= len;
-    }
+double fRand(double fMin, double fMax) {
+    // https://stackoverflow.com/a/2704552
+    double f = (double)rand() / RAND_MAX;
+    return fMin + f * (fMax - fMin);
 }

@@ -1,24 +1,20 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-// box
-const int X = 1000;
-const int Y = 1000;
+#define X_SIZE 100  // boundary
+#define Y_SIZE 100  // boundary
 
-// circle
-const int B = 100;
-const double MAX_RADIUS = 10.0;
-const double MIN_RADIUS = 0.5;
-const double MAX_VEL = 5.0;
-const double MIN_VEL = 0.5;
+#define V_MAX 10    // maximum velocity
+#define V_MIN 0     // minimum velocity
 
-// threads
-const int N = 5;
-const int NUM_THREADS = N*N;
+#define R_MAX 10    // maximum radius
+#define R_MIN 1     // minimum radius
 
-// exec
-const int fps = 10;
-const double dt = 1.0 / fps;
-const double T = 10.0;
+#define N 3        // number of particles
+#define N_G 5       // number of subgrids
+#define N_T N_G*N_G // number of threads
+
+#define Tf 10       // final time
+#define dt 0.1      // time step
 
 #endif
