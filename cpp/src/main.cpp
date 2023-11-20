@@ -66,7 +66,6 @@ int main() {
     while(T < Tf) {
         for(int i = 0; i < N; i++) {
             particles[i].update();
-            borderCollision(particles[i]);
         }
 
         vector<vector<Particle>> subgrids(N_T);

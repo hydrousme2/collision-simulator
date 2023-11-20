@@ -20,24 +20,24 @@ bool checkCollision(Particle& a, Particle& b) {
     return true;
 }
 
-void borderCollision(Particle& particle) {
-    if(particle.pos.x < 0) {
-        particle.pos.x = 0;
-        particle.vel.x *= -1;
-    }
-    if(particle.pos.x > X_SIZE) {
-        particle.pos.x = X_SIZE;
-        particle.vel.x *= -1;
-    }
-    if(particle.pos.y < 0) {
-        particle.pos.y = 0;
-        particle.vel.y *= -1;
-    }
-    if(particle.pos.y > Y_SIZE) {
-            particle.pos.y = Y_SIZE;
-            particle.vel.y *= -1;
-        }
-}
+// void borderCollision(Particle& particle) {
+//     if(particle.pos.x < 0) {
+//         particle.pos.x = 0;
+//         particle.vel.x *= -1;
+//     }
+//     if(particle.pos.x > X_SIZE) {
+//         particle.pos.x = X_SIZE;
+//         particle.vel.x *= -1;
+//     }
+//     if(particle.pos.y < 0) {
+//         particle.pos.y = 0;
+//         particle.vel.y *= -1;
+//     }
+//     if(particle.pos.y > Y_SIZE) {
+//             particle.pos.y = Y_SIZE;
+//             particle.vel.y *= -1;
+//     }
+// }
 
 void resolveCollision(Particle& a, Particle& b) {
     Vec2d x = a.pos - b.pos;

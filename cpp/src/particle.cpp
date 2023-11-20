@@ -15,6 +15,23 @@ bool Particle::operator==(const Particle& other) const {
 
 void Particle::update() {
     pos = pos + vel * dt;
+    
+    if(pos.x < 0) {
+        pos.x = 0;
+        vel.x *= -1;
+    }
+    if(pos.x > X_SIZE) {
+        pos.x = X_SIZE;
+        vel.x *= -1;
+    }
+    if(pos.y < 0) {
+        pos.y = 0;
+        vel.y *= -1;
+    }
+    if(pos.y > Y_SIZE) {
+            pos.y = Y_SIZE;
+            vel.y *= -1;
+    }
     }
 
 double distance(const Particle& lhs, const Particle& rhs) {
