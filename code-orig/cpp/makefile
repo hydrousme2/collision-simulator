@@ -20,4 +20,27 @@ clean:
 	@rm -rf bin
 
 run: $(EXECUTABLE)
-	@$(EXECUTABLE)
+	@echo "Running the program..."
+	@time ./$(EXECUTABLE)  # Measure execution time
+
+profile: $(EXECUTABLE)
+	@echo "Profiling the program..."
+	@g++ -o $(EXECUTABLE)_profiled -pg $(SOURCES) $(CXXFLAGS)
+	@./$(EXECUTABLE)_profiled
+	@gprof -b ./$(EXECUTABLE)_profiled | grep -A100 "time\s\+seconds" | grep -v "time\s\+seconds" | sort -k2 -n -r > profile_results.txt
+	@rm -f $(EXECUTABLE)_profiled gmon.out
+	@echo "Profiling results stored in profile_results.txt"
+
+memory: $(EXECUTABLE)
+	@echo "Checking memory usage..."
+	@valgrind ./$(EXECUTABLE)  # Check memory usage
+
+thread_monitor: $(EXECUTABLE)
+	@echo "Monitoring threads..."
+	@htop -p "$(EXECUTABLE)"
+
+
+.PHONY: all clean run profile memory thread_monitor
+
+
+.PHONY: all clean run profile memory thread_monitor

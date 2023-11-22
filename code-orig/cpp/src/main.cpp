@@ -61,8 +61,6 @@ int main() {
 
     double T = 0;
 
-    auto start = high_resolution_clock::now();
-
     while(T < Tf) {
         for(int i = 0; i < N; i++) {
             particles[i].update();
@@ -93,10 +91,6 @@ int main() {
         cout << particles[i].radius;
         cout << endl;
     }
-
-    auto stop = high_resolution_clock::now();
-    auto duration = duration_cast<microseconds>(stop - start);
-    cout << "Time taken by function: " << duration.count() << " microseconds" << endl;
     
     return 0;
 }
